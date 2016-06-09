@@ -1,18 +1,30 @@
 #  Rust EFL 
 
-Rust bindings for the Enlightenment Foundation Libraries (version 1.10.0-0.0.1.99).
+[Rust](https://www.rust-lang.org) bindings for the [Enlightenment Foundation Libraries](https://www.enlightenment.org/about-efl).
 
-These versions of the bindings currently correspond to the latest code base
-both for EFL (1.10.x) and the Rust language, so it is required to fetch and 
-install the necessary libraries/implementation from the master git repository 
-for both of these projects.
+## Status
 
-- EFL: http://git.enlightenment.org/
-- Rust: https://github.com/mozilla/rust.git
+The [original rust-efl project](https://github.com/araujol/rust-efl) was created in April, 2014. [Araujol's](https://github.com/araujol)
+commits stopped end of June 2014; then it was immediately [forked](https://github.com/amty/rust-efl),
+followed by commits by [amty](https://github.com/amty) and  [suhr](https://github.com/suhr); they stopped work December 2014.
 
-Requirements:
+I (Arlo) have started updating the code for Rust 1.9.0 and EFL 1.17.1, but
+Rust and the EFL have changed significantly since the first rust-efl code was written.
+At the moment, the *test_simple* example runs, but other examples still need to be updated.
 
-- efl *EFL core libraries*
+The code __needs a complete review__. I would not recommend using this for any serious project yet.
+I will be contacting the original authors to see if they want to continue work and try to establish
+who will be hosting the official repository.
+
+## Requirements
+
+The **rust-efl** bindings correspond to the latest stable code base
+both for **EFL** and the **Rust** language. Slightly older versions may work, but
+**rust-efl** development is based on these versions.
+*Update in progress (as mentioned in above Status)*
+
+- [Rust 1.9](https://www.rust-lang.org/downloads.html)
+- [efl 1.17.1](https://www.enlightenment.org/download) *EFL core libraries*
 - evas_generic_loaders *Loaders for Evas using 'generic' module*
 - emotion_generic_players *Players for Emotion using 'generic' module*
 - elementary *EFL widget toolkit*
@@ -21,15 +33,11 @@ Requirements:
 
 In the top level directory of this source code:
 
-    $ rustc src/efl.rs --crate-type=lib
-
-Now you can build programs using the rust-efl library bindings:
-
-    $ rustc tests/test_simple.rs -L.
+    $ cargo build
 
 ## Run:
 
-    $ ./test_simple
+    $ cargo run --example test_simple
 
 Enjoy!
 
