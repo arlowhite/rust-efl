@@ -18,7 +18,7 @@
 
 extern crate libc;
 
-use types::{int, uint};
+use types::{int};
 use std::ffi::CString;
 use std::ptr;
 use std::option::Option;
@@ -52,13 +52,13 @@ pub enum EcoreEvent {
 
 pub struct SigInfo;
 
-/*pub struct EcoreEventSignalExit {
+pub struct EcoreEventSignalExit {
     pub interrupt: eina::EinaBool,
     pub quit: eina::EinaBool,
     pub terminate: eina::EinaBool,
     pub ext_data: *const c_void,
     pub data: SigInfo
-}*/
+}
 
 type EcoreTimer = eo::Eo;
 
@@ -122,7 +122,8 @@ pub fn init() -> i32 {
     unsafe { ecore_init() as i32 }
 }
 
-pub fn app_args_set(argc: uint, argv: Vec<String>) {
+pub fn app_args_set(argv: Vec<String>) {
+    let argc = argv.len();
     let vchars_ptr: *const *const c_char = to_c_args(argv);
     unsafe { ecore_app_args_set(argc as c_int, vchars_ptr) }
 }
